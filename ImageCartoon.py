@@ -66,36 +66,30 @@ def cartoonify(ImagePath):
         sys.exit()
 
     ReSized1 = cv2.resize(originalimage, (940,610))
-    #plt.imshow(ReSized1, cmap='gray')
     
     #converting an image to grayscale
     grayScaleImage= cv2.cvtColor(originalimage, cv2.COLOR_BGR2GRAY)
     ReSized2 = cv2.resize(grayScaleImage, (940,610))
-    #plt.imshow(ReSized2, cmap='gray')
-    
+
     #applying median blur to smoothen an image
     smoothGrayScale = cv2.medianBlur(grayScaleImage, 5)
     ReSized3 = cv2.resize(smoothGrayScale, (940,610))
-    #plt.imshow(ReSized3, cmap='gray')
     
     #retrieving the edges for cartoon effect by using thresholding technique
     getEdge = cv2.adaptiveThreshold(smoothGrayScale, 255, cv2.ADAPTIVE_THRESH_MEAN_C, 
                                     cv2.THRESH_BINARY, 9, 9)
 
     ReSized4 = cv2.resize(getEdge, (940,610))
-    #plt.imshow(ReSized4, cmap='gray')
-    
+   
     #applying bilateral filter to remove noise and keep edge sharp as required
     colorImage = cv2.bilateralFilter(originalimage, 9, 300, 300)
     ReSized5 = cv2.resize(colorImage, (940,610))
-    #plt.imshow(ReSized5, cmap='gray')
-    
+  
     #masking edged image with our "BEAUTIFY" image
     cartoonImage = cv2.bitwise_and(colorImage, colorImage, mask=getEdge)
 
     ReSized6 = cv2.resize(cartoonImage, (940,610))
-    #plt.imshow(ReSized6, cmap='gray')
-    
+   
     # Plotting the whole transition
     images=[ReSized1, ReSized2, ReSized3, ReSized4, ReSized5, ReSized6]
 
