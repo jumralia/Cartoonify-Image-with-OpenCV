@@ -50,7 +50,7 @@ The third parameter is the diameter of the pixel neighborhood, i.e, the number o
 let’s combine the two specialties. This will be done using MASKING. Perform bitwise and on two images to mask them.
 
 # Step 9: Plotting all the transitions together
-To plot all the images, first make a list of all the images. The list here is named “images” and contains all the resized images. Now, create axes in a plot and display one-one images in each block on the axis using imshow() method. plt.show() plots the whole plot at once after we plot on each subplot.
+To plot all the images, first make a list of all the images. The list here is named “images” and contains all the resized images. Now, create axes in a plot and display one-one images in each block on the axis using imshow() method. plt.show() plots the whole plot at once after we plot on each subplot. Figure_1.png showas all the transitions.
 
 # Step 10: Functionally of save button
 Here, the idea is to save the resultant image. For this, we take the old path, and just change the tail (name of the old file) to a new name and store the cartoonified image with a new name in the same folder by appending the new name to the head part of the file.
